@@ -6,10 +6,13 @@ import Card from "./Components/Card";
 
 function App() {
   const [count, setCount] = useState(0);
-
+  let object = {
+    username : "Sufiyan",
+    age : 15
+  }
   return (
     <>
-      <Card />
+      <Card  name = "chai or code" myObject = {object}/>
     </>
   );
 }

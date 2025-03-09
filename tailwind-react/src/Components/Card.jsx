@@ -1,6 +1,8 @@
 import React from "react";
 
-function Card() {
+function Card(props) {
+  console.log("Props" , props);
+  
   return (
     <div className="w-60 flex flex-col rounded-xl bg-black min-h-[19rem] text-white ">
       <div>
