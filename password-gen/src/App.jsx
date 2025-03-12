@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -9,7 +9,10 @@ function App() {
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [character, setCharacter] = useState(false);
 
-  // Hook for running a function more times
+  //ref hook
+  const passwordRef = useRef(null);
+
+  // Hook for running a function more times and depending upon function as well as optimizing function
   const passwordGenerator = useCallback(() => {
     let pass = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -20,11 +23,21 @@ function App() {
     // run length times and add one char in the password
     for (let i = 1; i <= length; i++) {
       let char = Math.floor(Math.random() * str.length + 1);
-      pass = str.charAt(char);
+      pass += str.charAt(char);
     }
 
     setPassword(pass);
   }, [length, numberAllowed, character]);
+
+  // function for copying the passwor to clipboard
+  const copyPasswordToClip = useCallback(() => {
+    passwordRef.current?.select();
+    window.navigator.clipboard.writeText(password);
+  }, [password]);
+
+  useEffect(() => {
+    passwordGenerator();
+  }, [length, numberAllowed, setCharacter, passwordGenerator]);
 
   return (
     <>
@@ -41,8 +54,12 @@ function App() {
             value={password}
             className="w-auto text-black px-2  py-2 rounded-md outline-none shadow-lg"
             placeholder="Password"
+            ref={passwordRef}
           />
-          <button className="ml-2 px-2 w-auto py-1 bg-orange-500 rounded-lg outline-none text-white text-lg">
+          <button
+            onClick={copyPasswordToClip}
+            className="ml-2 px-2 w-auto py-1 bg-orange-500 rounded-lg outline-none text-white text-lg"
+          >
             Copy
           </button>
         </div>
@@ -50,8 +67,8 @@ function App() {
         <div className="flex  gap-x-2 mt-6">
           <div className="flex items-center gap-x-1">
             <input
-              min={10}
-              max={50}
+              min={8}
+              max={15}
               value={length}
               type="range"
               className="cursor-pointer"
