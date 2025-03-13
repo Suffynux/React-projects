@@ -1,5 +1,5 @@
 import { useState  , } from "preact/hooks";
-import { Inputbox } from "./Components";
+import { Inputbox } from "./Components/Inputbox.jsx";
 import useCurrencyInfo from "./CustomsHooks/useCurrencyInfo";
 
 
