@@ -1,4 +1,5 @@
 import { useTodo } from "../Context";
+import { useState } from "react";
 
 function TodoForm() {
     const [todo , setTodo] = useState([])
@@ -6,7 +7,8 @@ function TodoForm() {
 
     const add = (e) => {
         e.preventDefault()
-
+        console.log("working");
+        
         if(!e) return 
 
         addTodo({
@@ -14,8 +16,10 @@ function TodoForm() {
             todo : todo,
             completed : false
         })
+        console.log(todo.completed);
+        
 
-        setTodo("")
+        
     }
     return (
         <form   onSubmit={add}className="flex">
@@ -26,6 +30,7 @@ function TodoForm() {
                 value={todo}
                 onChange={(e)=> {
                     setTodo(e.target.value)
+                    console.log("From submit event" ,e.target.value)
                 }}
                
             />
