@@ -1,17 +1,22 @@
-import React, { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  let [pass, setPass] = useState(false)
   return (
-
     <>
-    <h1 className='text-center bg-red-300'>Hello World</h1>
+      <div className="flex justify-center">
+        <div className="text-center ">
+      
+          <input type={pass ? 'text' : 'password'}  className='bg-red-200 m-1 p-2 rounded-lg'/>
+          <button className="bg-red-300 p-1 rounded-lg" onClick={()=>setPass(!pass)}>
+            {pass ? "Hide" : "Show Password"}
+          </button>
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
