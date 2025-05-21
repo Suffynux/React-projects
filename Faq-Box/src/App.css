@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+.faqOuter{
+  width: 1320px;
+  margin: auto;
+  margin: 20px;
+}
+
+.faqItem h2{
+  padding: 20px;
+  text-align: left;
+  background-color: gray;
+}
+
+.faqItem p{
+  padding: 0;
+  text-align: left;
+  background-color: gray;
+  transition: 2s;
+  transform: scaleY(0);
+}
+
+.showFaqItem{
+  transform: scaleY(1) !important;
+  padding: auto;
+
+}
+
+
