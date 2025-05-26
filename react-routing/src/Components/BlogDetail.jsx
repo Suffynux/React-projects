@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 const BlogDetail = () => {
   // Sample blog data
-  const data = {
+  const data   = {
     posts: [
       {
         id: 1,
