@@ -1,4 +1,4 @@
-npm create vite@latest tabbing-react -- --template react 
+npm create vite@latest Form-Handling -- --template react 
 npm install
 
 npm install tailwindcss @tailwindcss/vite
